@@ -1,0 +1,10 @@
+${PLUGIN_NAME} version ${PLUGIN_VERSION} by ${PLUGIN_AUTHORS}
+${PLUGIN_DESCRIPTION}.
+
+  ${CLI_MAIN_COMMAND} ${PLUGIN_NAME} <domain>
+
+Display certificate chain for a domain
+
+Options:
+
+  --port -p <port>        : Port for domain certificat infos (default 443)

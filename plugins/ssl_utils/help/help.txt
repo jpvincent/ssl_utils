@@ -1,0 +1,6 @@
+${PLUGIN_NAME} version ${PLUGIN_VERSION} by ${PLUGIN_AUTHORS} 
+${PLUGIN_DESCRIPTION}.
+
+Display ${CLI_MAIN_COMMAND} main help or ${CLI_MAIN_COMMAND} command help :
+
+  ${CLI_MAIN_COMMAND} help [command]

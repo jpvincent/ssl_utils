@@ -1,0 +1,12 @@
+${PLUGIN_NAME} version ${PLUGIN_VERSION} by ${PLUGIN_AUTHORS}
+${PLUGIN_DESCRIPTION}.
+
+  ${CLI_MAIN_COMMAND} ${PLUGIN_NAME} <file|domain>
+
+Where file is a certificate, private key file or certificate request.
+
+Options:
+
+  --port       -p <port>        : Port for domain certificat infos (default 443)
+  --only       -o <field>[,...] : display only specified fields
+  --servername -s <name>        : TLS extension servername

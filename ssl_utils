@@ -1,0 +1,52 @@
+#!/bin/sh
+
+CLI_REPO=""
+CLI_VERSION="0.0.1"
+
+escape() {
+  echo "$1" | sed -e 's/[]\/$*.^[]/\\&/g'
+}
+
+expand() {
+  echo "$(cd "$1" || exit 1; pwd)"
+}
+
+__help() {
+  command "init" "help"
+  help "$@"
+}
+
+check_help() {
+  for _P in "$@" ; do
+    if [ "$_P" = "-h" ] || [ "$_P" = "--help" ] ; then
+      __help --plugin "$PLUGIN_NAME" --exit 0
+    fi
+  done
+}
+
+command() {
+  PHASE=$1
+
+  if [ "$PHASE" = "init" ] ; then
+    shift 
+    PLUGIN_NAME="$1"
+    [ "z" = "z$PLUGIN_NAME" ] && __help --exit 0 
+    PLUGIN_ROOT_PATH="$CLI_PLUGINS_PATH/$PLUGIN_NAME"
+    [ -d "$PLUGIN_ROOT_PATH" ] || [ "$1" = "plugins" ] || __help --msg "command $1 not found" --exit 1
+  fi
+
+  PHASE="$PLUGIN_ROOT_PATH/$PHASE.sh"
+  shift
+  [ -f "$PHASE" ] && . "$PHASE" "$@"
+}
+
+CLI_ROOT_PATH=$(expand "$(dirname "$0")")
+CLI_MAIN_COMMAND="$(basename "$0")"
+CLI_PLUGINS_PATH="$CLI_ROOT_PATH/plugins/$CLI_MAIN_COMMAND"
+case "$1" in
+  *)
+    [ -n "$1" ] && PLUGIN_TO_LOAD=$1 && shift
+
+    command "init" "$PLUGIN_TO_LOAD"
+    command "cmd" "$@"
+esac

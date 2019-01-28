@@ -1,0 +1,5 @@
+#!/bin/sh
+
+PLUGIN_VERSION="0.0.1"
+PLUGIN_DESCRIPTION="Get domain chain"
+PLUGIN_AUTHORS="Greg"

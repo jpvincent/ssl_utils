@@ -1,0 +1,17 @@
+${PLUGIN_NAME} version ${PLUGIN_VERSION} by ${PLUGIN_AUTHORS} 
+${PLUGIN_DESCRIPTION}.
+
+Availables subcommands:
+
+list             : List available plugins
+new <name>       : Create a new plugin             
+search <pattern> : Search the plugin repository
+install <plugin> : Install a plugin
+remove <plugin>  : Uninstall a plugin
+
+Options:
+
+  --version -v <version>       : Plugin version (default 0.0.1)
+  --desc    -D <description>   : Plugin description
+  --authors -A <author>[, ...] : Plugin authors list
+  --force   -f                 : Force plugin creation

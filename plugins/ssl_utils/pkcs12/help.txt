@@ -1,0 +1,16 @@
+${PLUGIN_NAME} version ${PLUGIN_VERSION} by ${PLUGIN_AUTHORS}
+${PLUGIN_DESCRIPTION}.
+
+Availables subcommands:
+
+create <file>    : Create a PKCS#12 file
+extract <file>   : Extract certificate and/or private key from file
+info <file>      : Display PKCS#12 file informations
+
+Options:
+
+  --key        -k <file>       : Private key file
+  --cert       -c <file>       : Certificate file
+  --passin     -i <password>   : Import password
+  --passout    -o <password>   : Export password
+  --help       -h              : Display this help
