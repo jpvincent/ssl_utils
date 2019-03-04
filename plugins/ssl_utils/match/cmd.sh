@@ -13,6 +13,9 @@ set_file() {
     "rsa private key")
       __KEY=$__FILE
       ;;
+    "private key")
+      __KEY=$__FILE
+      ;;
     *)
       echo "$__FILE: invalid file!"
       exit 1
@@ -48,9 +51,14 @@ echo "Certificate : $__CERT"
 echo "Key         : $__KEY"
 echo
 
+CERT_MODULUS=$(openssl x509 -noout -modulus -in "$__CERT" | openssl md5 | awk '{print $2}')
+KEY_MODULUS=$(openssl rsa -noout -modulus -in "$__KEY" | openssl md5 | awk '{print $2}')
 MATCH=$(echo "$(openssl x509 -noout -modulus -in "$__CERT" | openssl md5 ; openssl rsa -noout -modulus -in "$__KEY" | openssl md5)" | uniq | wc -l)
-if [ "z$MATCH" = "z1" ] ; then
+# if [ "z$MATCH" = "z1" ] ; then
+if [ "$CERT_MODULUS" = "$KEY_MODULUS" ] ; then
   echo "Match!"
 else
   echo "NOT Match!"
+  echo "  - Certificate: $CERT_MODULUS"
+  echo "  - Key:         $KEY_MODULUS"
 fi

@@ -92,6 +92,10 @@ get_fields() {
       __REQ="rsa"
       __FIELDS=""
       ;;
+    "private key")
+      __REQ="rsa"
+      __FIELDS=""
+      ;;
     *)
       __REQ=""
       __FIELDS=""
