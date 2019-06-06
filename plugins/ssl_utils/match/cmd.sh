@@ -51,8 +51,8 @@ echo "Certificate : $__CERT"
 echo "Key         : $__KEY"
 echo
 
-CERT_MODULUS=$(openssl x509 -noout -modulus -in "$__CERT" | openssl md5 | awk '{print $2}')
-KEY_MODULUS=$(openssl rsa -noout -modulus -in "$__KEY" | openssl md5 | awk '{print $2}')
+CERT_MODULUS=$(openssl x509 -noout -modulus -in "$__CERT" | openssl md5  | sed -e 's/^.*=\s*//')
+KEY_MODULUS=$(openssl rsa -noout -modulus -in "$__KEY" | openssl md5  | sed -e 's/^.*=\s*//')
 MATCH=$(echo "$(openssl x509 -noout -modulus -in "$__CERT" | openssl md5 ; openssl rsa -noout -modulus -in "$__KEY" | openssl md5)" | uniq | wc -l)
 # if [ "z$MATCH" = "z1" ] ; then
 if [ "$CERT_MODULUS" = "$KEY_MODULUS" ] ; then
