@@ -28,7 +28,7 @@ plugins : Manage plugins for the ssl_utils CLI (by Greg)
 
 ## Examples
 
-### Retrieve certificat informations for a domain
+### Retrieve certificate informations for a domain
 
 ```
 $ ssl_utils info google.fr
@@ -45,7 +45,7 @@ san         : google.com *.2mdn.net *.android.com [...]
 ocsp_uri    : http://ocsp.pki.goog/GTSGIAG3
 ```
 
-### Retrieve certificat file informations
+### Retrieve certificate file informations
 
 ```
 $ ssl_utils info certificate.crt
@@ -103,7 +103,7 @@ $ ssl_utils chain google.com
 2: OU = GlobalSign Root CA - R2, O = GlobalSign, CN = GlobalSign
 ```
 
-### Check if private key dans certificat match
+### Check if private key matches certificate
 
 ```
 $ ssl_utils match certificat.crt private.key
@@ -122,7 +122,7 @@ $ ssl_utils pkcs12 create output.p12 --key private.key --cert certificat.crt --p
 Pkcs12: output.p12
 ```
 
-### Extract private key and/or certificat from PKCS12
+### Extract private key and/or certificate from PKCS12
 
 ```
 ssl_utils pkcs12 extract output.p12 --key private.key --cert certificat.crt --passin "s3cr3tp4ss"
